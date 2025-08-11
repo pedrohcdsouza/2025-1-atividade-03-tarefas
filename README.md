@@ -202,19 +202,47 @@ Para **compilar e executar** seus códigos-fontes.
 - deve conter imagens da tela capturada,
 - apesar da atividade ser coletiva, relatório deve ser individual.
 
-**Nome:** [Seu Nome]  
-**Data:** [Data]  
+**Nome:** Pedro Henrique Cardoso de Souza  
+**Data:** 11 08 2025
 
 ### **1. Objetivo**  
-[Descreva brevemente o objetivo da prática.]  
+O objetivo desta prática foi criar um ambiente utilizando Docker com base na imagem Fedora, configurado para compilar e executar programas em linguagem C. A atividade, nesse contexto, visou o aprendizado dobre o Dockerfile e execução de código nos containers
 
 ### **2. Passos Executados**  
-- [Liste os comandos usados e suas funções.]  
-- [Inclua prints (opcional).]  
+```
+--- Dockerfile
+# Referência qual a imagem vai ser utilizado no Container
+FROM fedora:latest
+
+# Atualiza e instala os pacotes necessários
+RUN dnf -y update && \
+    dnf -y install findutils gcc fish && \
+    dnf clean all
+
+# Cria diretório de trabalho
+RUN mkdir -p /app
+WORKDIR /app
+---
+
+--- CMD
+# Build da Imagem
+docker build
+
+# Iniciar o Container && Entrar no terminal
+docker run -it
+
+# Compila o código C
+gcc tarefa.c -o tarefa
+
+# Executa o código C
+./tarefa
+---
+```
 
 ### **3. Resultados Obtidos**  
-- [Saída do programa em C.]  
-- [Problemas enfrentados e soluções.]  
+```
+Processo executado com sucesso.
+```
 
 ### **4. Conclusão**  
-[Comente sobre a experiência e possíveis aplicações.]  
+A prática demonstrou como o Docker pode ser usado para criar ambientes de desenvolvimento, garantindo que todas as dependências e configurações estejam prontas para compilar e executar código C, padronizando o ambiente. Essa abordagem é a mais utilizada no mercado de trabalho, enfatizando a necessidade de sua aprendizagem
